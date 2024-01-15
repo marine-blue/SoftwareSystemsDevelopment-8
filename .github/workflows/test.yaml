@@ -1,29 +1,18 @@
- 27 - name: Run unit tests
- 28 run: npm test
- 29 env:
- 30 SQLITE_DB_LOCATION: /tmp/todo.db
- 31 env:
- 32 SQLITE_DB_LOCATION: /tmp/todo.db
- 33 branches:
- 34 - main
-  1 name: Build and Publish Docker
-  2   on:
-  3     push:
-  4       braches:
-  5         - main
-  6 jobs:
-  7   test:
-  6 jobs:
-  7   test:
-  6 jobs:
-  7   test:
-  8     runs-on: ubuntu-latest
-  9     steps:
- 10       - name: checkout
- 11         uses: actions/checkout@v2
- 12       - name: Install dependencies
- 13         run: npm install
- 14       - name: Run unit tests
- 15         run: npm test
- 16         env:
- 17           SQLITE_DB_LOCATION: /tmp/todo.db
+name: Build and Publish Docker
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+      uses: actions/checkout@v2
+      - name: Install dependencies
+      run: npm install
+      - name: Run unit tests
+      run: npm test
+      env:
+        SQLITE_DB_LOCATION: /tmp/todo.db
